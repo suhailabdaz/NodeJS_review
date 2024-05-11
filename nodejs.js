@@ -1,15 +1,15 @@
 const http = require("http")
-const express = require('express')
+const url = require("url")
 
-const app = express()
 
-app.get('/sum/:num1/:num2',(req,res)=>{
-    const num1 = req.params.num1;
-    const num2 = req.params.num2;
-    let num = Number(num1)+Number(num2)
-    num = num.toString()
-    res.end(num)
+
+const app = http.createServer((req,res)=>{
+    const parsedUrl = url.parse(req.url)
+    if(parsedUrl.path=="/"){
+        res.end("bibbhb")
+    }else{
+        res.end("gigigigigigi")
+    }
 })
-
 
 app.listen(3000)
